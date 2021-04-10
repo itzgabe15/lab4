@@ -51,13 +51,36 @@ function getCart($email) {
 
 function deleteItem($id) {
 
-    //TODO complete implementation using the product id
-    alert("cart.js/deleteItem() is not implemented")
+    $.ajax({
+        url: Url +'Cart/'+ $id,
+        type: 'DELETE',
+        success: function() 
+        {
+            alert("Deleted the item, refershing the page")
+        },
+        error: function() 
+        {
+            alert("Error while fetching data.");
+        }
+    });
 }
 
 function checkOut() {
 
-    //TODO complete implementation
-    alert("cart.js/checkOut() is not implemented")
+    let email = $.trim($('#email').val()); //gets the user's email
+ 
+    $.ajax({
+        url: Url + 'Cart',
+        type: 'PUT',
+        dataType: 'json',
+        data: 
+         { 
+             "email": email,
+         }, //the json is defined here using javascript's dictionary syntax.
+        contentType: 'text/json',
+        success: function() {
+            alert("Checked out the cart!")
+        }
+    });
 
 }
