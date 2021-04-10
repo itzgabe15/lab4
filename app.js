@@ -223,7 +223,7 @@ function addToCart($id) {
         data: JSON.stringify({"email":email,"product_id":$id}),
         contentType: 'application/json',
         success: function(data) {
-            alert("Addedt to cart");
+            alert("Added to cart");
             list = '';
             listAdd = '';
             itemCount = 0;
